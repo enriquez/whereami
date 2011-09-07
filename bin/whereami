@@ -1,0 +1,13 @@
+#!/usr/bin/env macruby
+
+$: << File.join(File.dirname(__FILE__), "..", "lib")
+require 'whereami'
+
+class LatLongPrinter
+  def didReceiveLocation(lat, long)
+    puts "#{lat} #{long}"
+  end
+end
+
+whereami = WhereAmI.new(LatLongPrinter.new)
+whereami.locate
